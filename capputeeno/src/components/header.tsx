@@ -2,7 +2,6 @@
 import styled from "styled-components"
 import { Saira_Stencil_One } from "next/font/google";
 import { InputWithIcon } from "./input";
-import { BagIcon } from "./bagIcon";
 import { ShoppingControl } from "./shoppingControl";
 
 const sairaStencil = Saira_Stencil_One({
