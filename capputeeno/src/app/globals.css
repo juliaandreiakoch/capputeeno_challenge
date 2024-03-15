@@ -2,8 +2,15 @@
   --border-radius: 12px;
   --logo-color: #5D5D6D;
   --bg-input-box: #F3F5F6;
+  --bg-main: #F0F0F5;
   --text-dark: #000000;
+  --text-dark2: #41414D;
+  --text-price: #09090A;
   --delete-color: #DE3838;
+  --border-bottom: #FFA585;
+  --text-filter: #737380;
+  --shapes: #DCE2E5;
+
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
