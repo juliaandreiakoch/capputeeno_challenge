@@ -28,13 +28,15 @@ const InputContainer = styled.div`
     }
 `
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+     handleChange: (value: string) => void;
+}
 
 export const InputWithIcon = (props: InputProps) => {
     return (
         <InputContainer>
-            <Input {...props}/>
+            <Input onChange={(event) => props.handleChange(event.target.value)} {...props}/>
             <SearchIcon/>
         </InputContainer>
-    )
+    )    
 }

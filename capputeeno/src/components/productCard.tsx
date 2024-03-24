@@ -1,14 +1,17 @@
+import { centsToReais } from "@/utils/centsToReais";
 import styled from "styled-components";
 
-const Card = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+interface cardProps {
+    name: string, 
+    price: number, 
+    image: string
+}
 
+const Card = styled.div`
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(10px);
     border-radius: 0px 4px;
+    cursor: pointer;
 
     width: 256px;
 
@@ -32,28 +35,33 @@ const Card = styled.div`
     }
 
     div {
-        width: 228px;
-        height: 1px;
-        margin: 8px 0;
-        color: var(--shapes);
-    }
-
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        flex-direction: column;
+        padding: 8px 0px;
+        padding-left: 15px;
+        
+        > div {
+            width: 228px;
+            height: 1px;
+            margin: 8px 0;
+            padding: 0px;
+            background: var(--shapes);
+        }
     }
 `
-interface cardProps {
-    name: string, 
-    price: number, 
-    image: string
-}
 
 export const ProductCard = (props: cardProps) => {
     
     return(
         <Card>
             <img src={props.image} alt="" />
-            <h3>{props.name}</h3>
-            <div/>
-            <p>{props.price}</p> 
+            <div>
+                <h3>{props.name}</h3>
+                <div></div>
+                <p>{centsToReais(props.price)}</p> 
+            </div>
         </Card>
     )
 }
