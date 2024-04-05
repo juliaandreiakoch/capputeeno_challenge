@@ -41,6 +41,7 @@ const PriorityFilter = styled.ul`
     list-style: none;
 
     top: 100%;
+    right: 3px;
 
     li {
         font-size: 14px;
