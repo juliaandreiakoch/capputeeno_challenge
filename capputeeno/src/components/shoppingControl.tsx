@@ -20,12 +20,12 @@ const Container = styled.div`
 `
 
 export const ShoppingControl = () => {
-    const {value} = useLocalStorage('bagItems') //pega o item do carrinho no local storage
+    const {value} = useLocalStorage('bagItems', []) //pega o item do carrinho no local storage
 
     return(
         <Container>
             <BagIcon/>
-            {value && value.length && <BagCount>{value.length}</BagCount>}
+            {value.length > 0 && <BagCount>{value.length}</BagCount>}
            
         </Container>
     )

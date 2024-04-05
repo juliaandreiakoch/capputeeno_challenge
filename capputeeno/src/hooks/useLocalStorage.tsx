@@ -1,14 +1,18 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-//consulta o valor do local storage -> lógica de controle de estado
-export function useLocalStorage<T>(item: string){
-    const storageValue = localStorage.getItem(item)
+export function useLocalStorage<T>(item: string, initialValue: T){
+    const [value, setValue] = useState<T>(initialValue)
 
-    const [value, setValue] = useState(storageValue ? JSON.parse(storageValue) : null);
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        let value = localStorage.getItem(item)
+        if(value) setValue(JSON.parse(value))
+    }, [window]);
 
     const updateLocalStorage = (newValue: T) => {
         setValue(newValue);
         localStorage.setItem(item, JSON.stringify(newValue));
-    }
-    return {value, updateLocalStorage}
+    };
+
+    return { value, updateLocalStorage };
 }

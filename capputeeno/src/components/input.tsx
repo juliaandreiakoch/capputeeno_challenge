@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { SearchIcon } from "./searchIcon";
 import { InputHTMLAttributes } from "react";
 
-export const Input = styled.input`
-    width: 352px;
+export const Input = styled.input<InputHTMLAttributes<HTMLInputElement>>`
+    width: 100%;
     border-radius: 8px;
     border: none;
     padding: 10px 16px;
@@ -12,13 +12,19 @@ export const Input = styled.input`
 
     font-family: inherit;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 12px;
+    line-height: 20px;
     color: var(--text-dark);
-`
+
+    @media (min-width: ${props => props.theme.desktopBreakpoint}) {
+        font-size: 14px;
+        line-height: 22px;
+    }
+`;
+
 const InputContainer = styled.div`
     position: relative;
-    width: 352px;
+    width: 250px;
     
     svg {
         position: absolute;
@@ -26,17 +32,21 @@ const InputContainer = styled.div`
         top: 50%;
         transform: translateY(-50%);
     }
-`
+
+    @media (min-width: ${props => props.theme.desktopBreakpoint}) {
+        width: 352px;
+    }
+`;
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-     handleChange: (value: string) => void;
+    handleChange: (value: string) => void;
 }
 
-export const InputWithIcon = (props: InputProps) => {
+export const InputWithIcon: React.FC<InputProps> = ({ handleChange, ...props }) => {
     return (
         <InputContainer>
-            <Input onChange={(event) => props.handleChange(event.target.value)} {...props}/>
+            <Input onChange={(event) => handleChange(event.target.value)} {...props}/>
             <SearchIcon/>
         </InputContainer>
-    )    
-}
+    );   
+};
